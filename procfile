@@ -1,1 +1,1 @@
-web: gunicorn djangochat.asgi --log-file -
+
