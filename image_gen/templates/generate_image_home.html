@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function showGeneratingText() {
+            document.getElementById("generating-text").style.color = "green";
+            document.getElementById("generating-text").textContent = "Generating Image...";
+        }
+    </script>
+</head>
+
+<body>
+
+    {% extends 'core/base.html' %}
+
+    {% block title %}Log in | {% endblock %}
+
+    {% block content %}
+
+    <div class="container mx-auto p-4 text-center bg-white rounded shadow-lg">
+        {% if generated_image_path %}
+            <h1 class="text-2xl font-bold mb-4 text-blue-500">Image Generated</h1>
+        {% else %}
+            <h1 id="generating-text" class="text-2xl font-bold mb-4 text-blue-500">Image Generation</h1>
+        {% endif %}
+
+        <div class="card">
+            {% if generated_image_path %}
+                <center><img src="{{ generated_image_path }}" alt="Generated Image" class="max-w-full h-auto"></center>
+            {% else %}
+                <div class="no-image-message text-gray-600">No image generated yet.</div>
+            {% endif %}
+        </div>
+        <form method="post" class="mb-4" onsubmit="showGeneratingText()">
+            {% csrf_token %}
+            <div class="mt-4"> Enter a prompt and Use comma to separate different elements for better clarity and click 'Create'.</div>
+            <label for="prompt" class="mr-2 font-bold">Enter Prompt:</label>
+            <input type="text" id="prompt" name="prompt" required class="p-2 border rounded">
+            <button type="submit" class="px-4 py-2 bg-sky-700 text-white font-bold rounded hover:bg-sky-800">Create Image</button>
+        </form>
+    </div>
+
+    <footer class="bg-blue-500 text-white text-center py-5 poso absolute bottom-0 w-full">
+        <div class="container mx-auto">
+            <p>&copy; 2023 Mobiloitte. All Rights Reserved.</p>
+        </div>
+    </footer>
+    {% endblock %}
+</body>
+
+</html>

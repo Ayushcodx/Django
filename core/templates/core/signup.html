@@ -1,0 +1,333 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Sign up | {% endblock %}
+
+{% block content %}
+
+
+<div class="p-10 lg:p-20 text-center">
+    <h1 class="text-3xl lg:text-6xl ">Sign up</h1>
+</div>
+
+<form method="post" action="." class="lg:w-1/4 py-6 mx-auto p-6">
+    {% csrf_token %}
+    <div class="mb-5">
+        <label >First Name</label>
+
+        <input type="text" onkeyup="FIRST()" id="firstname" name="first_name" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200" >
+        <br><div id="fnameerror" style="display: none;"></div>  
+    </div>
+
+    <div class="mb-5">
+        <label >Last Name</label>
+
+        <input type="text" onkeyup="LastName()" id="lastname" name="last_name" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200">
+        <br><div id="lnameerror" style="display: none;"></div>  
+    </div>
+
+    <div class="mb-5">
+        <label >Email</label>
+
+        <input type="email" onkeyup="Email()" id="email"  name="email" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200">
+        <div id="email-error" style="display: none;"></div>  
+    </div>
+
+
+    <div class="mb-5">
+        <label >Username</label>
+
+        <input type="text" onkeyup="Username()" id="username" name="username" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200">
+        <br><div id="usernameerror" style="display: none;"></div>  
+    </div>
+
+    <div class="mb-5">
+        <label >Password</label>
+
+        <input type="password" onkeyup="validatePassword()" id="password"  name="password1" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200">
+        <div id="pswd-error" style="display: none;"></div>  
+    </div>
+
+    <div class="mb-5">
+        <label >Repeat password</label>
+
+        <input type="password" onkeyup="confirmPassword()" id="confirmpassword" name="password2" class="w-full mt-2 px-4 py-2 rounded-xl bg-blue-200">
+        <div id="cpswderror" style="display: none;"></div>  
+    </div>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %} 
+                <div class="mb-5 p-4 rounded-xl bg-red-300 text-white">
+                    <p>{{ error|escape }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    <button class="px-5 py-3 rounded-xl text-white bg-sky-700 hover:bg-sky-800">Submit</button>
+</form>
+<footer class="bg-blue-500 text-white text-center py-6 poso relative bottom-0 w-full">
+  <div class="container mx-auto">
+      <p>&copy; 2023 Mobiloitte. All Rights Reserved.</p>
+  </div>
+
+</footer>
+<script>
+//FIRSTNAME
+function FIRST() {
+    var a = document.getElementById("firstname").value;
+    var b = /^[A-Z][a-z]{2,15}$/;
+
+    if (b.test(a)) {
+      {
+        document.querySelector("#fnameerror").style.display = "none";
+      }
+    } else {
+      document.querySelector("#fnameerror").style.display = "flex";
+      var error_message = document.querySelector("#fnameerror");
+      var error_message_text;
+      error_message.style.color = "red";
+
+      if (!a.match(/^[A-Z]$/)) {
+        error_message_text = " Start with a capital letter, followed by lowercase characters.";
+      }
+      if (a.match(/[,.!?;:'"@#$%^&*()<>|\/]/)) {
+        error_message_text = "Must not contain special char";
+      } 
+      if (a.match(/[0-9]/)) {
+        error_message_text = "Number cannot be used";
+      }
+      if (a.length < 3) {
+        error_message_text = "At least 3 char long";
+      }
+      if (a.length > 15) {
+        error_message_text = "Not more than 15 char";
+      }
+      if (a.match(/\s+/)) {
+        error_message_text = "Remove Whitespace";
+      }
+
+      error_message.innerHTML = error_message_text;
+    }
+  }
+ 
+//LASTNAME
+
+  function LastName() {
+        var c = document.getElementById("lastname").value;
+        var d = /^[A-Z][a-z]{3,10}$/;
+
+
+        if (d.test(c)) {
+            document.querySelector("#lnameerror").style.display = "none";
+        } else {
+            document.querySelector("#lnameerror").style.display = "flex";
+            var error_message = document.querySelector("#lnameerror");
+            console.log(error_message)
+            var error_message_text;
+            error_message.style.color = "red";
+
+            if (!c.match(/^[A-Z]+$/)) {
+                error_message_text = "Start with a capital letter, followed by lowercase characters.";
+            }
+            if (c.match(/[,.!?;:'"@#$%^&*()<>|\/]/)) {
+                error_message_text = "Must not contain special char";
+            }
+            if (c.match(/[0-9]/)) {
+                error_message_text = "Number cannot be used";
+            }
+            if (c.length < 3) {
+                error_message_text = "At least 3 characters long";
+            }
+            if (c.length > 10) {
+                error_message_text = "Not more than 10 characters";
+            }
+            if (c.match(/\s+/)) {
+                error_message_text = "Remove Whitespace";
+            }
+
+            error_message.innerHTML = error_message_text;
+        }
+    }
+
+//USERNAME
+function Username() {
+    var c = document.getElementById("username").value;
+    var error_message = document.querySelector("#usernameerror");
+
+    var d = /^[a-z]{3,10}$/;
+
+    if (d.test(c)) {
+        error_message.style.display = "none";
+        error_message.innerHTML = "";
+        return;
+    }
+
+    error_message.style.display = "flex";
+    var error_message_text;
+    error_message.style.color = "white";
+
+    if (c.length < 3) {
+        error_message_text = "At least 3 characters long";
+        error_message.style.color = "red";
+    }
+
+    if (c.length > 30) {
+        error_message_text = "Not more than 30 characters";
+        error_message.style.color = "red";
+    }
+
+    if (c.match(/\s+/)) {
+        error_message_text = "Remove Whitespace";
+        error_message.style.color = "red";
+    }
+
+    if (c.match(/[\w\.-]+@[\w\.-]+\.\w{2,}/)) {
+        error_message_text = "Cannot contain an email address";
+        error_message.style.color = "red";
+    }
+
+    error_message.innerHTML = error_message_text;
+}
+
+
+//EMAIL
+function Email() {
+    var a = document.getElementById("email").value;
+    var b = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{3})?$/;
+
+    if (b.test(a)) {
+        document.querySelector("#email-error").style.display = "none";
+    } else {
+        document.querySelector("#email-error").style.display = "flex";
+        var error_message = document.querySelector("#email-error");
+        var error_message_text;
+        error_message.style.color = "red";
+        if (!a) {
+            error_message_text = "Email cannot be empty";
+        } else if (a.match(/\s/)) {
+            error_message_text = "Cannot contain whitespace.";
+        } else if (
+            (a.match(/-/g) || []).length > 2 ||
+            (a.match(/_/g) || []).length > 2
+        ) {
+            error_message_text = "Cannot contain more than 2 hyphens or underscores.";
+        } else if (a.match(/[+=`{},!?;:'"#$%^&*()<>|\/]/)) {
+            error_message_text = "Special char not allowed";
+        } else {
+            error_message_text = "Invalid email";
+        }
+        error_message.innerHTML = error_message_text;
+    }
+}
+
+        //PASSOWRD
+        function validatePassword() {
+  var password = document.getElementById("password").value.trim();
+
+  
+  var regexUpperCase = /[A-Z]/;
+  var regexLowerCase = /[a-z]/;
+  var regexDigit = /\d/;
+  var regexSpecialChar = /[!@#$%^&*()_+=[\]{};':"\\|,.<>/?]/;
+
+  var isValidPassword =
+    password.length >= 8 &&
+    regexUpperCase.test(password) &&
+    regexLowerCase.test(password) &&
+    regexDigit.test(password) &&
+    regexSpecialChar.test(password);
+
+  if (isValidPassword) {
+    document.querySelector("#pswd-error").style.display = "none";
+  } else {
+    document.querySelector("#pswd-error").style.display = "flex";
+    var error_message = document.querySelector("#pswd-error");
+    var error_message_text;
+    error_message.style.color = "red";
+
+    if (!password) {
+      error_message_text = "Password field cannot be empty.";
+    } else if (!regexUpperCase.test(password)) {
+      error_message_text = "At least one char in Capital";
+    } else if (!regexDigit.test(password)) {
+      error_message_text = "At least one Number ";
+    } else if (!regexLowerCase.test(password)) {
+      error_message_text = "At least one char in small";
+    } else if (!regexSpecialChar.test(password)) {
+      error_message_text = "At least one Special Char";
+    } else if (password.length < 8) {
+      error_message_text = "Password must be at least 8 characters long.";
+    } else {
+      error_message_text =
+        "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character (!@#$%^&*()_+=[\\]{};':\"\\|,.<>/?).";
+    }
+
+    error_message.innerHTML = error_message_text;
+  }
+}
+
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var viewPasswordIcon = document.getElementById("viewPasswordIcon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    viewPasswordIcon.classList.remove("fa-eye");
+    viewPasswordIcon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    viewPasswordIcon.classList.remove("fa-eye-slash");
+    viewPasswordIcon.classList.add("fa-eye");
+  }
+}
+
+
+function confirmPassword()
+{
+
+  const confirm = document.getElementById("confirmpassword").value;
+  if ((confirm == (document.getElementById('password').value))) {
+    
+    document.querySelector("#cpswderror").style.display = "none";
+  } else {
+    
+    document.querySelector("#cpswderror").style.display = "flex";
+    var error_message = document.querySelector("#confirm-error");
+    var error_message_text;
+    error_message.style.color = "red";
+
+if(confirm.length == 0){
+  error_message_text="Confirm password cannot be blank";
+}
+if(!(confirm == (document.getElementById('password').value)))
+{
+  error_message_text= "Password did not match";
+}
+error_message.innerHTML = error_message_text;
+  }
+}
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("password");
+  var viewPasswordIcon = document.getElementById("viewPasswordIcon");
+
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    viewPasswordIcon.classList.remove("fa-eye");
+    viewPasswordIcon.classList.add("fa-eye-slash");
+  } else {
+    passwordInput.type = "password";
+    viewPasswordIcon.classList.remove("fa-eye-slash");
+    viewPasswordIcon.classList.add("fa-eye");
+    
+  }
+}
+
+
+
+
+
+
+</script>
+{% endblock %}
+

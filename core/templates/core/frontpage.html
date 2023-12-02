@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Welcome | {% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <h1 class="text-3xl lg:text-6xl font-bold mb-4">Chatzy</h1>
+    <p class="mb-8 text-lg px-10">
+        Connecting people through chat!
+    </p>
+    <a href="/signup/" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white py-2 px-6 rounded-full font-semibold transition duration-300">Get Started</a>
+</div>
+
+<div class="container mx-auto p-8 text-center">
+    <h1 class="text-3xl font-bold mb-6 text-blue-500">Our Mission</h1>
+
+    <p class="text-lg mb-8 text-gray-800">
+        At Chatzy, our mission is to revolutionize the way people connect and communicate. We strive to provide a seamless and secure platform where individuals can interact in real-time, fostering meaningful connections and relationships. Our dedication to user satisfaction and privacy forms the cornerstone of our mission.
+    </p>
+    <div class="py-8">
+    <h1 class="text-3xl font-bold mb-6 py=6 text-blue-500">Features</h1>
+    <div class="flex justify-center">
+
+        
+        <div class="max-w-md mx-4 mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Real-time Messaging</h2>
+                <p class="text-lg mb-4 text-gray-800">
+                    Experience the thrill of instant communication. Send and receive messages in real-time, creating an interactive and engaging communication experience. Stay connected with friends, family, and colleagues effortlessly.
+                </p>
+            </div>
+        </div>
+    
+       
+        <div class="max-w-md mx-4 mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">User-friendly Interface</h2>
+                <p class="text-lg mb-4 text-gray-800">
+                    Our application is designed with simplicity and ease of use in mind. Navigating through conversations is a breeze, ensuring that users of all levels can enjoy a hassle-free experience. Intuitive controls and clear interfaces make chatting a pleasure.
+                </p>
+            </div>
+        </div>
+    
+        
+        <div class="max-w-md mx-4 mb-8 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-4">
+                <h2 class="text-2xl font-bold mb-4">Image Generation</h2>
+                <p class="text-lg mb-4 text-gray-800">
+                    Unleash your creativity with our unique image generation feature. Based on your prompts, our system crafts images for a diverse range of text inputs. Express yourself in a whole new visual dimension and make your conversations truly stand out.
+                </p>
+            </div>
+        </div>
+    
+    </div>
+    </div>
+</div>
+<footer class="bg-blue-500 text-white text-center py-4 poso relative bottom-0 w-full">
+    <div class="container mx-auto">
+        <p>&copy; 2023 Mobiloitte. All Rights Reserved.</p>
+    </div>
+
+{% endblock %}

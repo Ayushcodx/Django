@@ -1,0 +1,88 @@
+{% extends 'core/base.html' %}
+
+{% block title %}About | {% endblock %}
+
+{% block content %}
+<div class="p-10 lg:p-20 text-center bg-gradient-to-r from-blue-500 to-purple-500 text-white">
+    <h1 class="text-3xl lg:text-6xl font-bold mb-4">Chatzy</h1>
+    <p class="mb-8 text-lg">Connecting people through chat!</p>
+    <a href="/signup/" class="bg-white text-blue-500 hover:bg-blue-500 hover:text-white py-2 px-6 rounded-full font-semibold transition duration-300">Get Started</a>
+</div>
+
+<div class="container p-12 text-center bg-white shadow-lg rounded-lg">
+    <h1 class="text-4xl lg:text-6xl font-bold mb-8 text-blue-500">About Us</h1>
+    <p class="text-lg mb-6 text-gray-800">
+        Welcome to our Chat Application! We provide a dynamic platform for users to connect and communicate with each
+        other in real-time. Whether you're catching up with friends or collaborating with colleagues, our app offers a
+        seamless experience.
+    </p>
+    <p class="text-lg mb-6 text-gray-800">
+        Our user-friendly interface makes it easy to navigate through your conversations. You can effortlessly send
+        messages to any registered user and view your chats with clarity and precision.
+    </p>
+    <p class="text-lg mb-6 text-gray-800">
+        In addition to text-based communication, we offer the exciting feature of generating images directly within the
+        website. Express yourself creatively by customizing your conversations with a range of visuals.
+    </p>
+    <p class="text-lg mb-6 text-gray-800">
+        We're dedicated to providing you with a secure and enjoyable chatting experience. Your privacy and satisfaction
+        are our top priorities.
+    </p>
+    <p class="text-lg mb-12 text-gray-800">
+        Join us today and start connecting like never before!
+    </p>
+    <a href="/signup/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Get Started</a>
+</div>
+
+
+<div class="container mx-auto p-10 text-center bg-white shadow-lg rounded-lg mb-8">
+    <h1 class="text-4xl font-bold text-blue-500 mb-6">Get in Touch</h1>
+
+    <div class="mb-6">
+        <p class="text-lg font-bold text-gray-800 mb-2">Contact Information:</p>
+        <div class="mb-2 flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 1C6.48 1 2 5.48 2 11c0 2.663.983 5.14 2.772 7.094l.043.046c.214.213.51.337.825.337.314 0 .61-.124.824-.336l.043-.046C9.016 16.14 10 13.663 10 11c0-3.866 3.134-7 7-7s7 3.134 7 7-3.134 7-7 7a7.02 7.02 0 0 1-4.95-2.05 1 1 0 0 1 .7-1.7 5.011 5.011 0 0 0 7.071 0c.195.194.451.292.706.292.268 0 .536-.102.707-.292a1 1 0 0 1 1.415 1.415 7.014 7.014 0 0 1-4.95 2.05z">
+                </path>
+            </svg>
+            <p class="text-gray-700">Email us at <a href="mailto:ayush.poddar@indicchain.com"
+                    class="text-blue-500">ayush.poddar@indicchain.com</a></p>
+        </div>
+        <div class="mb-2 flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 2C6.48 2 2 6.48 2 12c0 2.02.788 3.93 2.22 5.355l.046.045L12 22l7.734-4.6.045-.045C21.212 15.93 22 14.02 22 12c0-5.52-4.48-10-10-10zm0 2c4.41 0 8 3.59 8 8s-3.59 8-8 8-8-3.59-8-8 3.59-8 8-8z">
+                </path>
+            </svg>
+            <p class="text-gray-700">Call us at +91 7828980849</p>
+        </div>
+        <div class="flex items-center justify-center">
+            <svg class="w-6 h-6 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 16.31V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v9.31M12 22h.01">
+                </path>
+            </svg>
+            <p class="text-gray-700">Visit us at Delhi, India</p>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full transition duration-300">Get in Touch</a>
+    </div>
+</div>
+
+<footer class="bg-blue-500 text-white text-center py-4 poso relative bottom-0 w-full">
+    <div class="container mx-auto">
+        <p>&copy; 2023 Mobiloitte. All Rights Reserved.</p>
+    </div>
+
+</footer>
+
+</body>
+
+</html>
+
+{% endblock %}
