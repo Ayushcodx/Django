@@ -33,3 +33,4 @@ pyscopg2
 dj-database-url
 pyscopg2
 psycopg2-binary
+gunicorn
