@@ -2,4 +2,4 @@ services:
   - name: web
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: "your_project.settings.production"
+        value: "djangochat.settings"
