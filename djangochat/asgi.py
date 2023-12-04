@@ -16,6 +16,3 @@ application = ProtocolTypeRouter({
         routing.websocket_urlpatterns
     ),
 })
-
-from uvicorn.workers import UvicornWorker
-application = UvicornWorker(application)
