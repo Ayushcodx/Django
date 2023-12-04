@@ -17,3 +17,5 @@ application = ProtocolTypeRouter({
         )
     )
 })
+from uvicorn.workers import UvicornWorker
+application = UvicornWorker(application)
