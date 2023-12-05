@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'core',
     'room',
     'image_gen',
-    'corsheaders'
+    'corsheaders',
+    'daphne'
 ]
 
 MIDDLEWARE = [
