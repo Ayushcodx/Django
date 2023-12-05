@@ -1,5 +1,0 @@
-services:
-  - name: web
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: "djangochat.settings"
