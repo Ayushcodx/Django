@@ -15,17 +15,25 @@ from pathlib import Path
 
 
 import os
+
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangochat.settings")
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
 
-# Additional setting for Django 3.0 and above to allow async code
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+import room.routing
 
-# Other Django settings can go here...
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangochat.settings')
 
-# Get the WSGI application
-application = get_asgi_application()
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(
+            room.routing.websocket_urlpatterns
+        )
+    )
+})
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
