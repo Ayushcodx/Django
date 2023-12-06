@@ -22,7 +22,7 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.urls import path
 
-from . import consumers
+from room import consumers
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangochat.settings')
 
