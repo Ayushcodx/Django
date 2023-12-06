@@ -13,7 +13,19 @@ from decouple import config
 import dj_database_url
 from pathlib import Path
 
+
 import os
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "djangochat.settings")
+
+# Additional setting for Django 3.0 and above to allow async code
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
+
+# Other Django settings can go here...
+
+# Get the WSGI application
+application = get_asgi_application()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
