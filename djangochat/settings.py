@@ -25,12 +25,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = os.environ.setdefault("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config("DEBUG","False").lower()=="true"
+DEBUG = os.environ.setdefault("DEBUG","False").lower()=="true"
 
-ALLOWED_HOSTS = config("ALLOWED_HOSTS","").split(" ")
+ALLOWED_HOSTS = os.environ.setdefault("ALLOWED_HOSTS","").split(" ")
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
@@ -95,7 +95,7 @@ CHANNEL_LAYERS = {
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-database_url = config("DATABASE_URL")
+database_url = os.environ.setdefault("DATABASE_URL")
 DATABASES = {
     'default': dj_database_url.parse(database_url),
 }
