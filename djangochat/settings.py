@@ -16,20 +16,6 @@ from pathlib import Path
 
 import os
 
-from django.core.asgi import get_asgi_application
-
-
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangochat.settings')
-
-application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(
-        URLRouter(
-         websocket_urlpatterns
-        )
-    )
-})
 
 
 
@@ -100,7 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangochat.wsgi.application'
-
+ASGI_APPLICATION = 'djangochat.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
