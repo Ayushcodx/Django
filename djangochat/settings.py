@@ -65,7 +65,8 @@ INSTALLED_APPS = [
     'core',
     'room',
     'image_gen',
-    'corsheaders'
+    'corsheaders',
+    'media'
 ]
 
 MIDDLEWARE = [
